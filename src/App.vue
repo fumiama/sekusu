@@ -18,6 +18,29 @@ function nav2(l: string) {
   window.location.href = l
 }
 
+const contents = [
+  {
+    title: "CMoe-Counter",
+    desc: "多种风格的萌萌计数器",
+    link: "https://counter.seku.su"
+  },
+  {
+    title: "Emozi",
+    desc: "颜文字汉字抽象转写器",
+    link: "https://emozi.seku.su"
+  },
+  {
+    title: "Words-Away",
+    desc: "误屏蔽词绕过检测工具",
+    link: "https://words-away.seku.su"
+  },
+  {
+    title: "Gitea",
+    desc: "自建同步用版本管理站",
+    link: "https://gitea.seku.su"
+  }
+]
+
 </script>
 
 <template>
@@ -58,42 +81,19 @@ function nav2(l: string) {
     </var-row>
   </var-cell>
   <var-cell class="content-container">
-    <var-row :gutter="[0, 32]">
-      <var-col :span="8" align="center" justify="center">
-        <var-card 
-          title="CMoe-Counter"
-          subtitle="多种风格的萌萌计数器"
-        >
-          <template #extra>
-            <var-button text round @click="nav2('https\://counter.seku.su')">
-              <var-icon name="chevron-right" />
-            </var-button>
-          </template>
-        </var-card>
-      </var-col>
-      <var-col :span="8" align="center" justify="center">
-        <var-card 
-          title="Emozi"
-          subtitle="颜文字汉字抽象转写器"
-        >
-          <template #extra>
-            <var-button text round @click="nav2('https\://emozi.seku.su')">
-              <var-icon name="chevron-right" />
-            </var-button>
-          </template>
-        </var-card>
-      </var-col>
-      <var-col :span="8" align="center" justify="center">
-        <var-card 
-          title="Words-Away"
-          subtitle="误屏蔽词绕过检测工具"
-        >
-          <template #extra>
-            <var-button text round @click="nav2('https\://words-away.seku.su')">
-              <var-icon name="chevron-right" />
-            </var-button>
-          </template>
-        </var-card>
+    <var-row :gutter="[32, 32]">
+      <var-col v-for="(item, i) in contents" :key="i"
+          :xs="24" :sm="24/contents.length" :md="24/contents.length" :lg="24/contents.length" :xl="24/contents.length"
+          align="center" justify="center">
+        <var-paper :elevation="2" :radius="8" >
+          <var-cell :title="item.title" :description="item.desc">
+            <template #extra>
+              <var-button text round @click="nav2(item.link)">
+                <var-icon name="chevron-right" />
+              </var-button>
+            </template>
+          </var-cell>
+        </var-paper>
       </var-col>
     </var-row>
   </var-cell>
